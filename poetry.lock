@@ -586,7 +586,7 @@ pathspec = ">=0.5.3"
 pyyaml = "*"
 
 [metadata]
-content-hash = "c74d3f8c150109d3b8fe0eabdcfc034a031d68ee3bfe4764eb451d93c2378431"
+content-hash = "5fa7f2e9626eef3c02cca63ffaa189704dc6d7906ffca4c96abc85a9eb87d85c"
 lock-version = "1.0"
 python-versions = "^3.8"
 

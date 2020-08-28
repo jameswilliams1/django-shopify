@@ -1,5 +1,7 @@
 from django.urls import reverse
 
+from shopify_app.orders.views import OrderCreateView
+
 
 class TestOrderListView:
     def test_get_populates_context(self, mocker, client):
@@ -28,3 +30,18 @@ class TestOrderCreateView:
         # should redirect to all orders on success
         assert post_response.status_code == 302
         assert post_response["Location"] == reverse("orders:all")
+
+    def test_form_valid(self, mocker):
+        form = mocker.Mock()
+        cleaned_data = {"quantity": 1, "title": "title", "email": "email"}
+        form.cleaned_data = cleaned_data
+        create_order = mocker.patch(
+            "shopify_app.orders.views.create_order", autospec=True
+        )
+
+        view = OrderCreateView()
+        view.request = mocker.Mock()
+        view.form_valid(form)
+
+        expected = {"line_items": [{"quantity": 1, "title": "title"}], "email": "email"}
+        create_order.assert_called_once_with(expected)

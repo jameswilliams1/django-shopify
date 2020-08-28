@@ -14,7 +14,7 @@ class OrderCreateView(SuccessMessageMixin, FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        line_items = {key: data.get(key) for key in ("title", "quantity")}
+        line_items = {key: data.get(key) for key in ("title", "quantity", "price")}
         email = data.get("email")
         create_order({"email": email, "line_items": [line_items]})
         return super().form_valid(form)

@@ -18,6 +18,7 @@ class TestOrderListView:
 class TestOrderCreateView:
     def test_create_loads_form(self, mocker, client):
         mocker.patch("shopify_app.orders.views.OrderCreateView.form_class")
+        mocker.patch("shopify_app.orders.views.create_order", autospec=True)
         get_response = client.get(reverse("orders:create"))
         assert get_response.status_code == 200
 
@@ -33,7 +34,12 @@ class TestOrderCreateView:
 
     def test_form_valid(self, mocker):
         form = mocker.Mock()
-        cleaned_data = {"quantity": 1, "title": "title", "email": "email"}
+        cleaned_data = {
+            "quantity": 1,
+            "title": "title",
+            "email": "email",
+            "price": 100.00,
+        }
         form.cleaned_data = cleaned_data
         create_order = mocker.patch(
             "shopify_app.orders.views.create_order", autospec=True
@@ -43,5 +49,8 @@ class TestOrderCreateView:
         view.request = mocker.Mock()
         view.form_valid(form)
 
-        expected = {"line_items": [{"quantity": 1, "title": "title"}], "email": "email"}
+        expected = {
+            "line_items": [{"quantity": 1, "title": "title", "price": 100.00}],
+            "email": "email",
+        }
         create_order.assert_called_once_with(expected)

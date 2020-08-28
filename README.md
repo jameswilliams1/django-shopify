@@ -30,8 +30,11 @@ python manage.py createsuperuser
 Create a `.env` file in the project base directory with at least the following values filled out:
 
 ```sh
-DJANGO_SECRET_KEY=very-secret
-DJANGO_ALLOWED_HOSTS=0.0.0.0,mydomain.com
+DJANGO_SECRET_KEY
+DJANGO_ALLOWED_HOSTS
+SHOPIFY_ORDERS_URL
+SHOPIFY_API_KEY
+SHOPIFY_PASSWORD
 ```
 
 Start the app using the script **inside the poetry env**:

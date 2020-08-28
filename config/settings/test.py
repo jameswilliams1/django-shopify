@@ -9,9 +9,6 @@ SECRET_KEY = env(
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 # Shopify
-SHOPIFY_GET_ORDERS_URL = "https://example.com/view"
-SHOPIFY_CREATE_ORDER_URL = "https://example.com/create"
-SHOPIFY_ACCESS_TOKEN = "token"
+SHOPIFY_ORDERS_URL = "https://example.com/view"
 SHOPIFY_API_KEY = "key"
 SHOPIFY_PASSWORD = "password"
-SHOPIFY_SHARED_SECRET = "secret"

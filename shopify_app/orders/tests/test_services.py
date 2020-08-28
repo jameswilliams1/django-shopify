@@ -1,10 +1,3 @@
-# SHOPIFY_GET_ORDERS_URL
-# SHOPIFY_CREATE_ORDER_URL
-# SHOPIFY_ACCESS_TOKEN
-# SHOPIFY_API_KEY
-# SHOPIFY_PASSWORD
-# SHOPIFY_SHARED_SECRET
-
 from base64 import urlsafe_b64encode
 
 from django.conf import settings
@@ -27,4 +20,4 @@ def test_get_all_orders(requests_mock):
     )
 
     assert request.headers.get("Authorization") == f"Basic {auth_key.decode('utf-8')}"
-    assert request.url == settings.SHOPIFY_GET_ORDERS_URL
+    assert request.url == settings.SHOPIFY_ORDERS_URL

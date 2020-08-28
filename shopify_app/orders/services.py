@@ -4,6 +4,8 @@
 # SHOPIFY_API_KEY
 # SHOPIFY_PASSWORD
 # SHOPIFY_SHARED_SECRET
+import requests
+from django.conf import settings
 
 
 def get_all_orders():
@@ -12,7 +14,11 @@ def get_all_orders():
     Returns:
         list: each order in the inventory as a dict
     """
-    ...
+    response = requests.get(
+        settings.SHOPIFY_GET_ORDERS_URL,
+        auth=(settings.SHOPIFY_API_KEY, settings.SHOPIFY_PASSWORD),
+    )
+    return response.json()["orders"]
 
 
 def create_order(order):

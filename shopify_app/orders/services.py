@@ -30,4 +30,3 @@ def create_order(order):
     Returns:
         # TODO
     """
-    ...

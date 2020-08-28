@@ -1,10 +1,16 @@
-from django.views.generic import CreateView, TemplateView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls.base import reverse_lazy
+from django.views.generic import FormView, TemplateView
 
+from shopify_app.orders.forms import OrderCreateForm
 from shopify_app.orders.services import get_all_orders
 
 
-class OrderCreateView(CreateView):
-    ...
+class OrderCreateView(SuccessMessageMixin, FormView):
+    template_name = "orders/order_create_form.html"
+    form_class = OrderCreateForm
+    success_url = reverse_lazy("orders:all")
+    success_message = "Order added successfully."
 
 
 order_create_view = OrderCreateView.as_view()

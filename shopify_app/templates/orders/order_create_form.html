@@ -1,7 +1,21 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Create Order{% endblock title %}
 
 {% block content %}
-{{ form }}
+<br>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form class="form-horizontal" method="POST" action="{% url 'orders:create' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+        </form>
+    </div>
+  </div>
 {% endblock content %}

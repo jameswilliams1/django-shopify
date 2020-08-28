@@ -15,8 +15,7 @@ class TestOrderListView:
 
 class TestOrderCreateView:
     def test_create_loads_form(self, mocker, client):
-        mocker.patch("shopify_app.orders.views.OrderCreateForm", autospec=True)
-
+        mocker.patch("shopify_app.orders.views.OrderCreateView.form_class")
         get_response = client.get(reverse("orders:create"))
         assert get_response.status_code == 200
 
@@ -26,6 +25,6 @@ class TestOrderCreateView:
             data,
             content_type="application/x-www-form-urlencoded",
         )
-        # should redirect or all orders
+        # should redirect to all orders on success
         assert post_response.status_code == 302
         assert post_response["Location"] == reverse("orders:all")

@@ -16,8 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    # redirect home page to all orders
+    path("", RedirectView.as_view(pattern_name="orders:all", permanent=True)),
+    # order management
+    path("orders/", include("shopify_app.orders.urls", namespace="orders")),
+    # admin site
     path("admin/", admin.site.urls),
 ]
 

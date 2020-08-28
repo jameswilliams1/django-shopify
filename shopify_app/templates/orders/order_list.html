@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load l10n %}
+{% block title %}View Orders{% endblock title %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Price</th>
+        <th scope="col">Currency</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Processed At</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+      <tr>
+        <th scope="row"><a href="{{ order.order_status_url }}">{{ order.id }}</a></th>
+        <td>{{ order.total_price }}</td>
+        <td>{{ order.currency }}</td>
+        <td>{{ order.confirmed }}</td>
+        <td>{{ order.processed_at }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

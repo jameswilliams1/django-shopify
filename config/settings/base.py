@@ -100,9 +100,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-GB"
 
+LOCALE_NAME = "en-GB"
+
 TIME_ZONE = "Europe/London"
 
-USE_I18N = True
+USE_I18N = False
 
 USE_L10N = True
 
@@ -123,11 +125,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# Date string formatting
-DATE_FORMAT = "%d-%m-%Y"
-
-DATETIME_FORMAT = "%d-%m-%Y %H:%M:%S"
 
 LOGGING = {
     "version": 1,

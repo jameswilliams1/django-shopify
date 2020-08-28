@@ -1,14 +1,14 @@
-from django.views.generic import View
+from django.views.generic import CreateView, ListView
 
 
-class OrderCreateView(View):
+class OrderCreateView(CreateView):
     ...
 
 
 order_create_view = OrderCreateView.as_view()
 
 
-class OrderListView(View):
+class OrderListView(ListView):
     ...
 
 

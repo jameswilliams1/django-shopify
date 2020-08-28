@@ -78,3 +78,10 @@ Run unit tests:
 ```sh
 pytest --cov
 ```
+
+## Still to Do
+
+- Configure Django SSL settings and run `manage.py check --deploy`
+- Refactor `OrderListView` to use a background task queue for accessing the Shopify API
+- Set up Traefik/Whitenoise to serve static files and as a load balancer
+- Update `OrderCreateForm` and `OrderCreateView` to allow for multiple line items
